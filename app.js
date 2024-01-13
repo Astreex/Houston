@@ -1,6 +1,6 @@
 const hamb = document.querySelector("#hamb");
 const smallMenu = document.querySelector("#smallMenu");
-const menu = document.querySelector("#menu").cloneNode(1);
+const navMenu = document.querySelector("#navMenu").cloneNode(1);
 const body = document.body;
 
 hamb.addEventListener("click", hambHandler);
@@ -14,10 +14,10 @@ function hambHandler(e) {
 }
 
 function renderSmallMenu() {
-  smallMenu.appendChild(menu);
+  smallMenu.appendChild(navMenu);
 }
 
-const links = Array.from(menu.children);
+const links = Array.from(navMenu.children);
 
 links.forEach((link) => {
   link.addEventListener("click", closeOnClick);

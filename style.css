@@ -43,7 +43,7 @@ body {
 }
 
 .menu {
-    position: relative !important;
+    position: relative;
     display: flex;
     justify-content: space-between;
     margin: 16px 50px;
