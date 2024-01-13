@@ -1,49 +1,30 @@
-// const word = document.querySelector('.beginning')
-// console.log(word)
+const hamb = document.querySelector("#hamb");
+const smallMenu = document.querySelector("#smallMenu");
+const menu = document.querySelector("#menu").cloneNode(1);
+const body = document.body;
 
-// setTimeout(() => {
-//     addStyleTo(word)},
-//     500
-// )
-// function addStyleTo(node) {
-//     node.style.color = 'red'
-//     node.style.outline = '2px solid #fff'
-//     node.style.margin = '150px 20px 20px'
-//     node.style.border = '2px solid #fff'
-//     node.style.cursor = 'pointer'
-//     node.ondragstart = noselect
-//     node.onselectstart = noselect
-//     node.oncontextmenu = noselect
-//     function noselect() {return false;}
-// }
-// word.onclick = () => {
-//     if (word.style.color === 'red') {
-//         word.style.fontSize = '5rem'
-//         word.style.color = 'yellow'
-//     } else {
-//         word.style.color = 'red'
-//         word.style.fontSize = '2rem'
-//     }
-// }
-const p = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        console.log('Preparing data...')
-        const backendData = {
-            server: 'aws',
-            port: 2000,
-            domain: '.com'
-        }
-        resolve(backendData)
-    }, 2000)
-})
+hamb.addEventListener("click", hambHandler);
 
-p.then(data => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            data.modified = true
-            resolve(data)
-        }, 2000)
-    }).then(clientData => {
-        console.log('Data received', clientData)
-    })
-})
+function hambHandler(e) {
+  e.preventDefault();
+  smallMenu.classList.toggle("open");
+  hamb.classList.toggle("active");
+  body.classList.toggle("noscroll");
+  renderSmallMenu();
+}
+
+function renderSmallMenu() {
+  smallMenu.appendChild(menu);
+}
+
+const links = Array.from(menu.children);
+
+links.forEach((link) => {
+  link.addEventListener("click", closeOnClick);
+});
+
+function closeOnClick() {
+  smallMenu.classList.remove("open");
+  hamb.classList.remove("active");
+  body.classList.remove("noscroll");
+}
