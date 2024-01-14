@@ -235,7 +235,7 @@ div.table-box {
     }
 }
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1000px) {
     .navbar__wrap .navMenu {
         display: none;
     }
